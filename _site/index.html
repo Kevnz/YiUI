@@ -1,0 +1,94 @@
+<!doctype html>
+<!-- Conditional comment for mobile ie7 http://blogs.msdn.com/b/iemobile/ -->
+<!-- Appcache Facts http://appcachefacts.info/ -->
+<!--[if IEMobile 7 ]>    <html class="no-js iem7" manifest="default.appcache?v=1"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js" manifest="default.appcache?v=1"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+
+  <title></title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  
+  <!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Home screen icon  Mathias Bynens http://goo.gl/6nVq0 -->
+  <!-- For iPhone 4 with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/h/apple-touch-icon.png">
+  <!-- For first-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/m/apple-touch-icon.png">
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="img/l/apple-touch-icon-precomposed.png">
+  <!-- For nokia devices: -->
+  <link rel="shortcut icon" href="img/l/apple-touch-icon.png">
+  
+  <!--iOS web app, deletable if not needed -->
+  <!--<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-startup-image" href="img/l/splash.png">-->
+  
+  <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+  <meta http-equiv="cleartype" content="on">
+	
+	<!-- more tags for your 'head' to consider https://gist.github.com/849231 -->
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/iui.css?v=1">
+ <link rel="stylesheet" title="Default" href="css/default/default-theme.css"  type="text/css"/>
+   <link rel="stylesheet" href="css/iui-panel-list.css" type="text/css" />
+  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+  <script src="js/modernizr-custom.js"></script>
+</head>
+
+<body>
+
+    <div class="toolbar">
+        <h1 id="pageTitle">YiUI</h1>
+        <a id="backButton" class="button" href="#"></a>
+    </div>
+<ul id="home" title="iUI Demos" selected="true">
+	<li><a href="#about">About</a></li>
+	<li><a href="#samples">Samples</a></li>
+	<li><a href="#3rd-party">3rd Party Samples</a></li>
+	<li><a href="#tests">Tests</a></li>
+	<li><a href="#sandbox">Sandbox</a></li>
+</ul> 
+<div id="about" class="panel" title="about">
+  <h2>YiUI</h2>
+  <ul>
+  	<li><a target="_blank" href="http://yuilibrary.com">YUI Library Website</a></li>
+	<li><a target="_blank" href="http://yuilibrary.com">YUI Library Website</a></li>	
+	<li><a target="_blank" href="http://www.iui-js.org/">iUI Project Website</a></li>
+	<li><a target="_blank" href="http://code.google.com/p/iui/">iUI on Google Code</a></li> 
+  </ul>
+
+</div>
+
+  <!-- JavaScript at the bottom for fast page loading -->
+ 
+  <script>
+
+    
+    // Media Queries Polyfill https://github.com/shichuan/mobile-html5-boilerplate/wiki/Media-Queries-Polyfill
+    yepnope({
+      test : Modernizr.mq('(min-width)'),
+      nope : ['js/respond.min.js']
+    });
+  </script>
+  
+  <!-- Debugger - remove for production -->
+  <!-- <script src="https://getfirebug.com/firebug-lite.js"></script> -->
+  <script src="http://yui.yahooapis.com/3.4.0/build/yui/yui-min.js"></script>
+  <script src="/yiui/yiui.js"></script>
+  <script>
+ 	YUI().use('yiui', function(Y){
+ 		var yiui = new Y.iUI();
+ 	});
+  </script>
+
+</body>
+</html>
