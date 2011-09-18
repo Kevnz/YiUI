@@ -1,7 +1,5 @@
 require 'rubygems'
-require 'sinatra' 
-require 'haml'
-require 'haml/helpers'
+require 'sinatra'  
  
  
 set :public, Proc.new { File.join(root, "_site") }

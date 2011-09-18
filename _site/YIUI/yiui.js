@@ -50,7 +50,7 @@ function(Y) {
     var YiUI = Y.Base.create('YiUI', Y.Base, [], {
         initializer: function() {
             Y.log('in the initializer', 'info', 'yiui');
-            //
+            //TODO, don't loop bind to all anchors as required
             Y.all('a').each(function(node, index){
             	Y.log(node.get('href'));
             	if(node.get('href').indexOf('#') > 0){
@@ -58,6 +58,10 @@ function(Y) {
             	}
             	
             },this);
+            currentPage = {
+            	title: Y.one('title').get('innerHTML'),
+            	id:'#home'//default convention
+            }
             
             
         },
@@ -70,6 +74,7 @@ function(Y) {
 			link.setAttribute("selected", "true");
 			// We need to check for backlinks here like in showPageID()
 			// That backlink functionality needs to be in here somewhere
+			pageHistory.push(currentPage);
 			this.showPage( Y.one(link.getAttribute('href')));
 			//setTimeout(unselect, 500);
 		},
@@ -89,11 +94,19 @@ function(Y) {
          but dialog-type pages only receive blur/focus events.
          */
         showPage: function(page, backwards) {
-			Y.log(page.getAttribute('title'));
+			Y.log(currentPage);
 			Y.log(Y.one('#backButton'));
+			var _page = {
+				title:  page.getAttribute('title'),
+				id: page.getAttribute('id')
+			};
+			Y.log(_page);
+			var previousPage =  pageHistory[pageHistory.length - 1]
+			Y.one('#backButton').set('innerHTML', previousPage.title).setStyle('display', 'inline').setAttribute('href', previousPage.id);
+			pageHistory.push(_page);
+			Y.one(page).setAttribute('selected', true);
+			Y.one(previousPage.id).setAttribute('selected', false);
 			
-			Y.one('#backButton').set('innerHTML', page.getAttribute('title')).setStyle('display', 'inline');
-			page.setAttribute('selected', true);
 			
         },
         /*
