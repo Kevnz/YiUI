@@ -105,8 +105,31 @@ function(Y) {
 			Y.one('#backButton').set('innerHTML', previousPage.title).setStyle('display', 'inline').setAttribute('href', previousPage.id);
 			pageHistory.push(_page);
 			Y.one(page).setAttribute('selected', true);
-			Y.one(previousPage.id).setAttribute('selected', false);
-			
+			var prevPage = Y.one(previousPage.id);
+				
+			 
+				page.setStyle('webkitTransitionDuration', '0ms'); // Turn off transitions to set toPage start offset
+				// fromStart is always 0% and toEnd is always 0%
+				// iPhone won't take % width on toPage
+				var toStart = 'translateX(' + window.innerWidth +	'px)';
+				var fromEnd = 'translateX(' +  '-100%' + ')';
+				page.setAttribute("selected", "true");
+				page.setStyles( {
+					'webkitTransform': toStart,
+					'webkitTransitionDuration': '0ms'
+					
+				});
+
+				page.setStyle('webkitTransitionDuration', '');	  // Turn transitions back on
+				function startTrans()
+				{
+					prevPage.setStyle('webkitTransform', fromEnd);
+					page.setStyle('webkitTransform', 'translateX(0%)'); //toEnd
+				}
+				//fromPage.addEventListener('webkitTransitionEnd', cb, false);
+				setTimeout(startTrans, 0);
+				//TODO this needs to be done after animation
+				prevPage.setAttribute('selected', false);
 			
         },
         /*
